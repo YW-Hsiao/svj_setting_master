@@ -1,0 +1,147 @@
+################################################################################
+#
+# Program: The parameter setup of SVJ for MadGraph5
+#          I refer to CKKW-L
+#          https://github.com/YW-Hsiao/SVJ_CKKWL/blob/main/s-channel_ckkwl-v2/Zpxdxd.txt
+#          and MLM
+#          https://github.com/YW-Hsiao/SVJ_Model/blob/main/s-channel/txt/svj0.txt
+# Author: You-Wei Hsiao
+# Institute: Department of Physics, National Tsing Hua University, Hsinchu,
+#            Taiwan
+# Mail: hsiao.phys@gapp.nthu.edu.tw
+# History: 2022/03/01 (First release)
+#        2022/03/
+# Version: v.1.0
+#
+################################################################################
+#
+#*********************************************************************
+#         Simplified DM model with s-channel spin-1 mediator         *
+#*********************************************************************
+import model DMsimp_s_spin1 
+define j = g u c d b s t u~ c~ d~ b~ s~ t~ 
+generate p p > xd xd~ @0 
+add process p p > xd xd~ j @1
+add process p p > xd xd~ j j @2
+output /youwei_home/SVJ_CKKWL/s-channel_ckkwl-v2/s
+
+launch /youwei_home/SVJ_CKKWL/s-channel_ckkwl-v2/s
+# 1. Import SM or BSM model
+# 2. Define constitute of a jet
+# 3. Physical process: Main contribution
+# 4. Add additional process: To close to real environment, small contribution
+# 5. Add additional process: To close to real environment, smaller contribution
+# 6. Output path: MG5 will generate Feynman diagrams in this path
+# 7. Launch path: MG5 will use these Feynman diagrams of this path
+#
+################################################################################
+#
+shower=OFF 
+detector=OFF 
+analysis=OFF 
+# 1. Close the shower and hadronization program in MG5
+# 2. Close the detector simulation program in MG5
+# 3. Close an analysis package in MG5
+#
+################################################################################
+#
+set run_card nevents 10000
+set run_card ebeam1 7000.0
+set run_card ebeam2 7000.0
+set run_card pdlabel lhapdf
+set iseed 300
+set MXd 10
+set MY1 1500
+# set MY1 scan:[1000, 1500, 2000]
+# 1. Number of events; Do not generate more than 1M events in a single run
+# 2. The total energy of one of the beam in GeV
+# 3. The total energy of one of the beam in GeV
+# 4. pdlabel: PDF set, spcify PDF is LHAPDF
+# 4-1. lhaid: the lhapdf number or LHAPDF id
+# 5. Spcify random seed
+# 6. The mass of Dirac fermion DM (XD or dark quark)
+# 7. The mass of spin-1 mediator (Y1 or Z')
+# #8. Scan different Y1 masses: 1 TeV, 1.5 TeV, 2.0 TeV
+# Remark:
+#        nevents 20000; ebeam1 6500.0; ebeam2 6500.0
+#        iseed 400, 500, ..., 3000
+#
+################################################################################
+#
+# Others
+#set event_norm sum
+#set lhaid 260000
+#set lhe_version 2.0
+#set cut_decays F
+# 1. event_norm: average/sum. Normalization of the weight in the LHEF
+# 2. LHAPDF id
+# 3. We use <LesHouchesEvents version="3.0"> in beginning
+# 4. Cut decay products
+#
+################################################################################
+#
+# Commands for CKKW-L jet merging
+set ickkw 0
+set xqcut 0.0
+set maxjetflavor 5
+set alpsfact 1
+set dparameter 0.4
+set ktdurham 20
+set drjj 0.0
+# 1. ickkw: 0 is CKKW-L or no matching, 1 is MLM
+# 2. xqcut: minimum kt jet measure between partons
+#           kT scale for merging shower products into jets
+# 3. maxjetflavor: Maximum jet pdg code
+# 4. alpsfact: Default, scale factor for QCD emission vx
+# 5. dparameter: Default, hidden_parameter
+# 6. ktdurham: Merging scale, hidden_parameter
+# 7. drjj: Default, min distance between jets
+# Remark: xqcut = 0.0 is weird
+#         ptj
+#         [1, 2, 3, 4, 5, 6, 21, 82]	= pdgs_for_merging_cut # hidden_parameter
+#         -1.0	= ptlund # hidden_parameter
+#         BLOCK QNUMBERS 82 #   ghg
+#
+################################################################################
+#
+# Commands for MLM jet merging
+set ickkw 1 
+set xqcut 100
+set maxjetflavor 5
+set alpsfact 1
+# 1. ickkw: 1 is MLM
+# 2. xqcut:
+# 3. maxjetflavor:
+# 4. alpsfact:
+# Remark: ickkw and xqcut are important parameters
+#
+################################################################################
+#
+# Coupling constants
+set gVXd 1 
+set gVd11 0.1 
+set gVu11 0.1 
+set gVd22 0.1 
+set gVu22 0.1 
+set gVd33 0.1 
+set gVu33 0.1 
+set decay wy1 auto
+done
+# 1. gVXd: Xd-Y1 vector coupling
+# 2. gVd11: d-Y1 vector coupling
+# 3. gVu11: u-Y1 vector coupling
+# 4. gVd22: s-Y1 vector coupling
+# 5. gVu22: c-Y1 vector coupling
+# 6. gVd33: b-Y1 vector coupling
+# 7. gVu33: t-Y1 vector coupling
+# 8. decay wy1 auto:
+# 9. done: This tells MG there are no more procs
+# Remark: DECAY  6   1.508336e+00
+#         DECAY  5000001   4.694945e+01
+#
+################################################################################
+
+
+
+
+
