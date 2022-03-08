@@ -79,25 +79,25 @@ HiddenValley:FSR = on
 HiddenValley:fragment = on
 HiddenValley:pTminFSR = 5.5
 HiddenValley:probVector = 0.75
-! 1. SU(N) if Ngauge > 1. Pair production cross sections contains a factor of Ngauge for new particles
+! 1. Ngauge: SU(N) if Ngauge > 1. Pair production cross sections contains a factor of Ngauge for new particles
 !    in the fundamental representation of this group.
-! 2. Order at which alpha_HV runs,
+! 2. alphaOrder: Order at which alpha_HV runs,
 !    option 1: first order, with the beta function based on Ngauge and NFlav.
 !    This option can not be used for the U(1) case, but only for the SU(N) ones.
-! 3. the Lambda_HV parameter used for the case of a running (first order) ...
+! 3. Lambda: confinement scale; the Lambda_HV parameter used for the case of a running (first order) ...
 !    alpha_HV(Q^2) = 12 * pi/((11 * Ngauge - 2 * nFlav) * ln(Q^2/Lambda_HV^2))
 !    i.e. when HiddenValley:alphaOrder = 1
-! 4. number of different flavours assumed to exist in the hadronization description,
+! 4. nFlav: number of different flavours assumed to exist in the hadronization description,
 !    leading to approximately 1/n_Flav of the produced HV-mesons being flavour-diagonal and
 !    capable to decay back to Standard Model particles.
-! 5. fixed alpha_HV scale of gv/gammav emission, used when HiddenValley:alphaOrder = 0,
+! 5. alphaFSR: fixed alpha_HV scale of gv/gammav emission, used when HiddenValley:alphaOrder = 0,
 !    but not used when it is = 1.
-! 6. The spin of the HV partners of the SM fermions, e.g. Dv, Uv, Ev and nuEv.
-! 7. switch on final-state shower of gv or gammav in a HV production process.
-! 8. switch on string fragmentation of the HV partonic system. Only relevant for SU(N) scenarios.
-! 9. lowest allowed pT of emission. Should be greater than or equal to 1.1 times Lambda,
+! 6. spinFv: The spin of the HV partners of the SM fermions, e.g. Dv, Uv, Ev and nuEv.
+! 7. FSR: switch on final-state shower of gv or gammav in a HV production process.
+! 8. fragment: switch on string fragmentation of the HV partonic system. Only relevant for SU(N) scenarios.
+! 9. pTminFSR: lowest allowed pT of emission. Should be greater than or equal to 1.1 times Lambda,
 !    or it will be reset automatically.
-! 10. fraction of HV-mesons that are assigned spin 1 (vector), with the remainder spin 0 (pseudoscalar).
+! 10. probVector: fraction of HV-mesons that are assigned spin 1 (vector), with the remainder spin 0 (pseudoscalar).
 !     Assuming the qv have spin 1/2 and the mass splitting is small, spin counting predicts that 3/4 of
 !      the mesons should have spin 1.
 ! Remark:
@@ -106,7 +106,8 @@ HiddenValley:probVector = 0.75
 !        Optionally up to 8 different such flavours can be allowed in the hidden sector, identities 4900101 - 4900108.
 !        The actual number used is set by HiddenValley:nFlav.
 !        c. alphaFSR: We can switch off HiddenValley:alphaFSR option, due to be used when HiddenValley:alphaOrder = 0.
-!        d. spinFv: this is not important, since we have no HV partners (no Qv -> q + qv process).
+!        d. spinFv: this is not important, since there is no HV partners (no Qv -> q + qv process).
+!                   zero flavor in hadronization
 !        e. pTminFSR: Notice that 1.1 * Lambda
 !        f. probVector: It is related to qv mass splitting.
 !
@@ -126,7 +127,7 @@ HiddenValley:probVector = 0.75
 53:m0 = 9.99
 ! 4900211:m0 = 9.99
 ! 4900213:m0 = 9.99
-! 1. 4900101: for the basic HV scenario, there is a new massive particle with only HV charge
+! 1. 4900101: hidden valley quark; for the basic HV scenario, there is a new massive particle with only HV charge
 !    4900101 - 4900108 are given by HiddenValley:nFlav
 ! 2. 4900111: pivDiag, a flavour-diagonal HV-meson with spin-0, that can decay back into the SM
 ! 3. 4900113: rhovDiag, a flavour-diagonal HV-meson with spin-1, that can decay back into the SM
