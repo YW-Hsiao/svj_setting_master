@@ -9,7 +9,7 @@
 ! Institute: Department of Physics, National Tsing Hua University, Hsinchu, Taiwan
 ! Mail: hsiao.phys@gapp.nthu.edu.tw
 ! History: 2022/03/05 (First release)
-!        2022/03/
+!        2022/03/08 (update detail)
 ! Version: v.1.0
 !
 *------------------------------------------------------------------------------------*
@@ -30,17 +30,20 @@ Main:numberOfEvents = 10000
 Main:timesAllowErrors = 3
 
 ! Random-Number Seed
+Random:setSeed = on
 Random:seed = 100
-! 1. Print a list of all flag/mode/parameter/word settings, Warning: this will be a long list.
-! 2. Print a line telling how many events have been generated so far, once every numberCount events.
+!
+! 1. showAllSettings: Print a list of all flag/mode/parameter/word settings, Warning: this will be a long list.
+! 2. numberCount: Print a line telling how many events have been generated so far, once every numberCount events.
 !    If set zero then no lines are ever printed.
-! 3. The number of events to list the Info information for, where relevant.
-! 4. The number of events to list the process record for, where relevant.
-! 5. The number of events to list the event record for, where relevant.
-! 6. The number of events to be generated.
-! 7. Allow this many times that pythia.next() returns false,
+! 3. numberShowInfo: The number of events to list the Info information for, where relevant.
+! 4. numberShowProcess: The number of events to list the process record for, where relevant.
+! 5. numberShowEvent: The number of events to list the event record for, where relevant.
+! 6. numberOfEvents: The number of events to be generated.
+! 7. timesAllowErrors: Allow this many times that pythia.next() returns false,
 !    i.e. that an event is flawed, before aborting the run.
-! 8. The seed to be used, if setSeed is on.
+! 8. setSeed: Indicates whether a user-set seed should be used every time the Pythis::init routine is called.
+! 9. The seed to be used, if setSeed is on.
 ! Remark: The order is different from reference.
 !         Random:setSeed on/off
 !
@@ -60,6 +63,7 @@ Random:seed = 100
 4900014:m0 = 50000
 4900015:m0 = 50000
 4900016:m0 = 50000
+!
 ! PID: minimal HV particles, there is a set of 12 particles that mirrors the SM flavour structure,
 !      and is charged under both the SM and the HV symmetry groups.
 ! m0: the nominal mass m_0 (in GeV).
@@ -79,6 +83,7 @@ HiddenValley:FSR = on
 HiddenValley:fragment = on
 HiddenValley:pTminFSR = 5.5
 HiddenValley:probVector = 0.75
+!
 ! 1. Ngauge: SU(N) if Ngauge > 1. Pair production cross sections contains a factor of Ngauge for new particles
 !    in the fundamental representation of this group.
 ! 2. alphaOrder: Order at which alpha_HV runs,
@@ -127,6 +132,7 @@ HiddenValley:probVector = 0.75
 53:m0 = 9.99
 ! 4900211:m0 = 9.99
 ! 4900213:m0 = 9.99
+!
 ! 1. 4900101: hidden valley quark; for the basic HV scenario, there is a new massive particle with only HV charge
 !    4900101 - 4900108 are given by HiddenValley:nFlav
 ! 2. 4900111: pivDiag, a flavour-diagonal HV-meson with spin-0, that can decay back into the SM
@@ -163,6 +169,7 @@ HiddenValley:probVector = 0.75
 4900213:addchannel = 1 0.14 91 -4 4
 4900213:addchannel = 1 0.14 91 -5 5
 4900213:addchannel = 1 0.3 0 53 -53
+!
 ! 1. id:onechannel = onMode bRatio meMode product1 product2 ...
 ! 2. id:addchannel = onMode bRatio meMode product1 product2 ...
 ! 3. onMode: integer code for use or not of channel,
@@ -188,6 +195,7 @@ Merging:Process = pp>{xd,4900101}{xd~,-4900101}
 Merging:nQuarksMerge = 5
 ! Merging:mayRemoveDecayProducts = on  ! key point
 ! Merging:doMerging = on
+!
 ! 1. doKTMerging: If the additional jets in the LHE files have been regulared by a kT cut,
 !    the user can supply the merging scale definition by setting this flag to on.
 !    kT here and below means cutting on Durham kT for e+e- collisions,
@@ -218,15 +226,16 @@ Merging:nQuarksMerge = 5
 *------------------------------------------------------------------------------------*
 !
 ! MLM jet merging
-! JetMatching:merge = on
-! JetMatching:setMad = on
-! JetMatching:scheme = 1
-! JetMatching:jetAlgorithm = 2
-! JetMatching:exclusive = 2
-! JetMatching:nJetMax = 2
-! JetMatching:qCut = 100
-! JetMatching:nQmatch = 5
-! JetMatching:clFact = 1.0
+JetMatching:merge = on
+JetMatching:setMad = on
+JetMatching:scheme = 1
+JetMatching:jetAlgorithm = 2
+JetMatching:exclusive = 2
+JetMatching:nJetMax = 2
+JetMatching:qCut = 100
+JetMatching:nQmatch = 5
+JetMatching:clFact = 1.0
+!
 ! 1. merge: Master switch to activate parton-jet matching.
 ! 2. setMad: When enabled, the merging parameters are set according to the values in the LHEF header.
 ! 3. scheme: The parton-jet MLM-style merging scheme.
@@ -254,6 +263,7 @@ LHEFInputs:nSubruns       = 1
 Main:subrun               = 0
 Beams:frameType = 4
 Beams:LHEF = /youwei_home/SVJ_CKKWL/s-channel_ckkwl-v2/s/Events/run_01/unweighted_events.lhe
+!
 ! 1. nSubruns: New setting to allow processing of multiple input LHEFs.
 ! 2. The number of the current subrun, a non-negative integer, put as first line in a section
 !    of lines to be read for this particular subrun.
