@@ -42,12 +42,14 @@ The comparison of with and without decays of 4900211/4900213.
         <td>14647/0.4317 pb</td>
     </tr>
 </table>
+
 Table: The last two columns are `number of events`/`cross-section`.  
 I use python script `analysis.py` to analyze these data.
 
 #### Conclusion:
 * In parton level, the cross-section of MLM case is larger than CKKW-L case.
 * In truth level, the cross-section/number of events of CKKW-L case is larger than MLM case.
+* However, for CKKW-L, the cross-section of truth level is larger than parton level one.
 * It seems that CKKW-L reweight and MLM doesn't reweight the event weights.
 
 ## 2. Test
