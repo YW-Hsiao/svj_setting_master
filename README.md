@@ -10,9 +10,39 @@ This repository is modifying and optimizing SVJ model and is my master project.
 These folders are the content of master thesis.
 
 ### 1-1. scheme_1
+The comparison of CKKW-L and MLM merging.  
+The comparison of with and without decays of 4900211/4900213.
 
-
-
+<table>
+    <tr>
+        <th>Comparison</th>
+        <th>s^(1/2)</th>
+        <th>Merging Scale</th>
+        <th>MadGraph5</th>
+        <th>PYTHIA8</th>
+    </tr>
+    <tr>
+        <th>CKKW-L & with</th>
+        <td rowspan="0">13 TeV</td>
+        <td rowspan="0">100</td>
+        <td rowspan="2">20000/0.5555 +- 0.0007549 pb</td>
+        <td>19306/0.5746 pb</td>
+    </tr>
+    <tr>
+        <th>CKKW-L & without</th>
+        <td>19373/0.5778 pb</td>
+    </tr>
+    <tr>
+        <th>MLM & with</th>
+        <td rowspan="2">20000/0.5895 +- 0.0009109 pb</td>
+        <td>14736/0.4350 pb</td>
+    </tr>
+    <tr>
+        <th>MLM & without</th>
+        <td>14647/0.4317 pb</td>
+    </tr>
+</table>
+Table: The last two columns are `number of events`/`cross-section`.
 
 ## 2. Test
 These folders are test.
