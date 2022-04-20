@@ -97,6 +97,67 @@ These folders are test.
 </table>
 
 ### 2-1. `test_1`
+* I test different combination of TMS (10, 20, 30, 100) and xqcut.
+* s^(1/2) = 13 TeV
+* Number of events = 20000
+
+<table>
+    <tr>
+        <th>Comparison</th>
+        <th>TMS</th>
+        <th>xqcut</th>
+        <th>MadGraph5</th>
+        <th>PYTHIA8</th>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td rowspan="2">10</td>
+        <td>0</td>
+        <td>0.9545 +- 0.00168 pb</td>
+        <td>14443/0.9325 pb</td>
+    </tr>
+    <tr>
+        <th>2</th>
+        <td>5</td>
+        <td>1.258 +- 0.002358 pb</td>
+        <td>11829/1.104 pb</td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td>20</td>
+        <td>0.9288 +- 0.001794 pb</td>
+        <td>10</td>
+        <td>14815/0.9284 pb</td>
+    </tr>
+    <tr>
+        <th>4</th>
+        <td rowspan="2">30</td>
+        <td>0</td>
+        <td>0.7947 +- 0.001431 pb</td>
+        <td>16399/0.8183 pb</td>
+    </tr>
+    <tr>
+        <th>5</th>
+        <td>20</td>
+        <td>0.7856 +- 0.00142 pb</td>
+        <td>16613/0.8200 pb</td>
+    </tr>
+    <tr>
+        <th>6</th>
+        <td rowspan="2">100</td>
+        <td>10</td>
+        <td>0.5557 +- 0.0007174 pb</td>
+        <td>19287/0.5721 pb</td>
+    </tr>
+    <tr>
+        <th>7</th>
+        <td>30</td>
+        <td>0.5556 +- 0.0007545 pb</td>
+        <td>19326/0.5754 pb</td>
+    </tr>
+</table>
+
+Table: The last two columns are `number of events`/`cross-section`.
 
 
 ## 3. Setup Cards and Analysis
@@ -118,6 +179,19 @@ These folders store the setup card and the analysis test.
     * Jet clustering
         * Select stable final state particle without/with filtering out dark sector
         * Let's do the jet clustering!!
-* `test_2_preselection.ipynb`: Test preselection function.
+* `test_2_jet_clustering.ipynb`: Upgrade
+* `test_3_preselection.ipynb`: Upgrade preselection function.
     * Analyze the jets in the truth level
-        * preselection
+        * preselection_v1
+* `test_4_mass_quantities.ipynb`:
+    * The transformation of 4-momentum
+    * Mass of trijet
+* `test_5_truth_jet_scheme_1.ipynb`:
+    * analyze_truthJet_scheme1_v1
+    * analyze_truthJet_scheme1_v2
+* `test_6_azimuthal_angle.ipynb`:
+    * `np.arctan2(y, x)`
+* `test_6_MET.ipynb`:
+    * MET_visParticles_v1
+* `test_7_truth_jet_MET_scheme_1.ipynb`:
+    * analyze_truthJet_MET_scheme1_v1
