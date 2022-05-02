@@ -52,6 +52,103 @@ I use python script `analysis_script_1.py` to analyze these data.
 * However, for CKKW-L, the cross-section of truth level is larger than parton level one.
 * It seems that CKKW-L reweight and MLM doesn't reweight the event weights.
 
+### 1-2. `scheme_2`
+1. Scan different `Lambda_d` and `rinv` with CKKW-L merging and without decays of 4900211/4900213.
+    * `HiddenValley:Lambda` = 5, 10, 100, 300
+    * `rinv` = 0, 0.1, 0.2, 0.3, 0.6, 0.9, 1
+2. The setting of MG5 is the same as `scheme_1/Zpxdxdx_s_ckkwl_tms100.txt`.
+
+<table>
+    <tr>
+        <th>s^(1/2)</th>
+        <th>xqcut</th>
+        <th>TMS</th>
+        <th>MadGraph5</th>
+    </tr>
+    <tr>
+        <td>13 TeV</td>
+        <td>0</td>
+        <td>100</td>
+        <td>0.5555 +- 0.0007549 pb</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Lambda_d</th>
+        <th>rinv</th>
+        <th>PYTHIA8</th>
+    </tr>
+    <tr>
+        <td rowspan="7">5</td>
+        <td>0</td>
+        <td>19334/0.5750 pb</td>
+    </tr>
+    <tr>
+        <td>0.1</td>
+        <td>19309/0.5750 pb</td>
+    </tr>
+    <tr>
+        <td>0.2</td>
+        <td>19360/0.5770 pb</td>
+    </tr>
+    <tr>
+        <td>0.3</td>
+        <td>19373/0.5778 pb</td>
+    </tr>
+    <tr>
+        <td>0.6</td>
+        <td>19328/0.5761 pb</td>
+    </tr>
+    <tr>
+        <td>0.9</td>
+        <td>19302/0.5748 pb</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>19286/0.5741 pb</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Lambda_d</th>
+        <th>rinv</th>
+        <th>PYTHIA8</th>
+    </tr>
+    <tr>
+        <td rowspan="7">300</td>
+        <td>0</td>
+        <td>19368/0.5769 pb</td>
+    </tr>
+    <tr>
+        <td>0.1</td>
+        <td>19317/0.5751 pb</td>
+    </tr>
+    <tr>
+        <td>0.2</td>
+        <td>19320/0.5754 pb</td>
+    </tr>
+    <tr>
+        <td>0.3</td>
+        <td>19349/0.5760 pb</td>
+    </tr>
+    <tr>
+        <td>0.6</td>
+        <td>19344/0.5768 pb</td>
+    </tr>
+    <tr>
+        <td>0.9</td>
+        <td>19383/0.5782 pb</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>19358/0.5764 pb</td>
+    </tr>
+</table>
+
+#### Conclusion:
+
 
 ## 2. Test
 These folders are test.
@@ -125,8 +222,8 @@ These folders are test.
     <tr>
         <th>3</th>
         <td>20</td>
-        <td>0.9288 +- 0.001794 pb</td>
         <td>10</td>
+        <td>0.9288 +- 0.001794 pb</td>
         <td>14815/0.9284 pb</td>
     </tr>
     <tr>
