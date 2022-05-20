@@ -3,7 +3,7 @@
 
 # test 1: sed
 # sed -e 's/LAMBDA/100/g' -e 's/RINV/0.6/g' test.cmnd > test_output.cmnd
-sed -e "s/LAMBDA/100/g" -e "s/RINV/0.6/g" test.cmnd > test_output.cmnd
+sed -e "s/LAMBDA/100/g" -e "s/RINV/0.6/g" -e "s/PTMINFSR/110/g" test.cmnd > test_output.cmnd
 
 
 # what I want
@@ -16,6 +16,8 @@ rinv=(0 0.1 0.2 0.3)
 for ((i=0; i < ${#Lambda_d[@]}; i++))
 do
     echo "*------  $(($i+1)). Lambda_d = ${Lambda_d[$i]}"
+    ptminfsr=$(echo "print(1.1 * ${Lambda_d[$i]})" | python3)
+    pt_min_fsr=$(printf "%.1f" $ptminfsr)
     for j in ${rinv[@]}
     do
         r_111=$(echo "print(1-$j)" | python3)
@@ -25,13 +27,13 @@ do
         rquark_113=$(printf "%1.2f" $r_113)
         rinv_cmnd=$(printf "%1.0f" $r_cmnd)
         # echo "${Lambda_d[$i]}, rinv = $j, rquark_111 = $r_111, $rquark_111, rquark_113 = $r_113, $rquark_113"
-        echo "rinv = $j, rquark_111 = $rquark_111, rquark_113 = $rquark_113, rinv_cmnd = $rinv_cmnd"
+        echo "pTminFSR = $pt_min_fsr, rinv = $j, rquark_111 = $rquark_111, rquark_113 = $rquark_113, rinv_cmnd = $rinv_cmnd"
         # echo $j $rquark_111 $rquark_113 $rinv_cmnd
         # echo '${Lambda_d[$i]}' '$j'
         # echo "${Lambda_d[$i]}" "$j"
-        # echo "sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/RINV/$j/g" -e "s/RQUARK_111/$rquark_111/g" -e "s/RQUARK_113/$rquark_113/g" test.cmnd > ./cmnd/Lambdad${Lambda_d[$i]}_rinv$rinv_cmnd.cmnd"
+        # echo "sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/PTMINFSR/$pt_min_fsr/g" -e "s/RINV/$j/g" -e "s/RQUARK_111/$rquark_111/g" -e "s/RQUARK_113/$rquark_113/g" test.cmnd > ./cmnd/Lambdad${Lambda_d[$i]}_rinv$rinv_cmnd.cmnd"
         echo ""
-        sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/RINV/$j/g" -e "s/RQUARK_111/$rquark_111/g" -e "s/RQUARK_113/$rquark_113/g" test.cmnd > ./cmnd/Lambdad${Lambda_d[$i]}_rinv$rinv_cmnd.cmnd
+        sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/PTMINFSR/$pt_min_fsr/g" -e "s/RINV/$j/g" -e "s/RQUARK_111/$rquark_111/g" -e "s/RQUARK_113/$rquark_113/g" test.cmnd > ./cmnd/Lambdad${Lambda_d[$i]}_rinv$rinv_cmnd.cmnd
     done
 done
 

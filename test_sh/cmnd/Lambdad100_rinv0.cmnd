@@ -8,7 +8,7 @@ HiddenValley:nFlav = 2
 HiddenValley:spinFv = 0
 HiddenValley:FSR = on
 HiddenValley:fragment = on
-HiddenValley:pTminFSR = 5.5
+HiddenValley:pTminFSR = 110.0
 HiddenValley:probVector = 0.75
 
 ! decays of 4900111 and 4900113
