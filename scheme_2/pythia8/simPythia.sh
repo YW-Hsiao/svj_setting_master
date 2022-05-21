@@ -12,6 +12,7 @@
 # Institute: Department of Physics, National Tsing Hua University, Hsinchu, Taiwan
 # Mail: hsiao.phys@gapp.nthu.edu.tw
 # History (v.1.0): 2022/04/29 First release.
+# History (v.1.1): 2022/05/21 Modify HiddenValley:pTminFSR = 1.1 * Lambda
 
 # Setup environment and variables
 now=$(date)
@@ -36,6 +37,9 @@ echo "Generate .cmnd files with different Lambda_d and rinv"
 for ((i=0; i < ${#Lambda_d[@]}; i++))
 do
     echo "*------  $(($i+1)). Lambda_d = ${Lambda_d[$i]}"
+    ptminfsr=$(echo "print(1.1 * ${Lambda_d[$i]})" | python3)
+    pt_min_fsr=$(printf "%.1f" $ptminfsr)
+    echo "pTminFSR = $pt_min_fsr"
     for j in ${rinv[@]}
     do
         r_111=$(echo "print(1-$j)" | python3)
@@ -47,11 +51,11 @@ do
         file_name="svj_Lambdad${Lambda_d[$i]}_rinv${rinv_cmnd}"
         echo "rinv = $j, rq_111 = $rq_111, rq_113 = $rq_113, rinv_cmnd = $rinv_cmnd"
         echo ""
-        sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/RINV/$j/g" -e "s/RQ_111/$rq_111/g" -e "s/RQ_113/$rq_113/g" svj.cmnd > ./$file_name.cmnd
+        sed -e "s/LAMBDA/${Lambda_d[$i]}/g" -e "s/PTMINFSR/$pt_min_fsr/g" -e "s/RINV/$j/g" -e "s/RQ_111/$rq_111/g" -e "s/RQ_113/$rq_113/g" svj.cmnd > ./$file_name.cmnd
     done
 done
 
-echo "Scan Lambda_d and rinv"
+echo "Generate .hepmc datasets with varying Lambda_d and rinv"
 cd $path_pythia8245_examples
 for ((i=0; i < ${#Lambda_d[@]}; i++))
 do

@@ -6,6 +6,7 @@
 # Institute: Department of Physics, National Tsing Hua University, Hsinchu, Taiwan
 # Mail: hsiao.phys@gapp.nthu.edu.tw
 # History (v.1.0): 2022/04/29 First release.
+# History (v.1.1): 2022/05/21 Modify HiddenValley:pTminFSR = 1.1 * Lambda.
 
 # Setup environment and variables
 now=$(date)
@@ -30,7 +31,7 @@ echo "Path of .hepmc file: $path_hepmc"
 echo "Path of .root and .log files: $path_root"
 echo "Path of Delphes DelphesHepMC: $path_Delphes342"
 
-echo "Scan Lambda_d and rinv"
+echo "Generate .root datasets with varying Lambda_d and rinv"
 cd $path_Delphes342
 for ((i=0; i < ${#Lambda_d[@]}; i++))
 do

@@ -37,7 +37,7 @@ HiddenValley:nFlav = 2
 HiddenValley:spinFv = 0
 HiddenValley:FSR = on
 HiddenValley:fragment = on
-HiddenValley:pTminFSR = 5.5
+HiddenValley:pTminFSR = 330.0
 HiddenValley:probVector = 0.75
 
 4900101:m0 = 10.0
