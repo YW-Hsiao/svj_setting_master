@@ -1,0 +1,23 @@
+# test Z boson background with Z boson decay to leptons
+# use MG5_aMC v2.7.3
+define j = g u c d s b u~ c~ d~ s~ b~
+generate p p > z, z > l+ l-
+
+output /youwei_u3/svj_data_master/test_background/Z_jets/z_lplm
+
+launch /youwei_u3/svj_data_master/test_background/Z_jets/z_lplm
+
+shower=Pythia8
+detector=Delphes
+analysis=OFF
+done
+
+/youwei_home/svj_setting_master/setup_card/delphes_card_ATLAS.tcl
+
+set run_card nevents 10000
+set run_card ebeam1 6500.0
+set run_card ebeam2 6500.0
+set run_card pdlabel lhapdf
+set iseed 300
+
+done

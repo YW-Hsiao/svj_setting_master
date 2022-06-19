@@ -1,0 +1,31 @@
+# test Z boson background
+# use MG5_aMC v2.7.3
+define j = g u c d s b u~ c~ d~ s~ b~
+generate p p > z @0
+add process p p > z j @1
+add process p p > z j j @2
+
+output /youwei_u3/svj_data_master/test_background/Z_jets/z
+
+launch /youwei_u3/svj_data_master/test_background/Z_jets/z
+
+shower=Pythia8
+detector=Delphes
+analysis=OFF
+done
+
+/youwei_home/svj_setting_master/setup_card/delphes_card_ATLAS.tcl
+
+set run_card nevents 10000
+set run_card ebeam1 6500.0
+set run_card ebeam2 6500.0
+set run_card pdlabel lhapdf
+set iseed 300
+
+# Commands for MLM jet merging
+set run_card ickkw 1 
+set run_card xqcut 40.0
+set run_card maxjetflavor 5
+set run_card alpsfact 1
+
+done
